@@ -5,6 +5,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
   }
 
   html {
@@ -19,13 +20,14 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     background: ${(props) => props.theme.colors.background};
-    color: ${(props) => props.theme.colors.text};
-    font: 400 16px Roboto, sans-serif;
+    color: ${(props) => props.theme.colors.textWhite};
+    font: 400 16px 'Lato', sans-serif;
+
     -webkit-font-smoothing: antialiased;
   }
 
   body {
-    font-family: sans-serif;
+    font-family: 'Lato', sans-serif;
   }
 
   button {

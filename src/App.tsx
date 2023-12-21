@@ -1,7 +1,7 @@
 import { ThemeProvider } from 'styled-components';
 import { Routes } from './routes';
-import { GlobalStyle } from './styles/global';
-import { theme } from './styles/theme';
+import { GlobalStyle } from './ui/styles/global';
+import { theme } from './ui/styles/theme';
 
 export const App: React.FC = () => (
   <ThemeProvider theme={theme}>

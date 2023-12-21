@@ -2,7 +2,7 @@ import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
 
-import { Button } from '../components';
+import { Button } from '../ui/components';
 
 let container: HTMLDivElement | null = null;
 

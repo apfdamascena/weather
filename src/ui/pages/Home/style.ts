@@ -9,27 +9,73 @@ export const Container = styled.div`
   align-items: center;
   flex-direction: column;
 
-  h1 {
-    font-size: 54px;
-    color: ${(props) => props.theme.colors.primary};
-    margin-top: 40px;
-    text-align: center;
-    @media (max-width: 720px) {
-      font-size: 28px;
-    }
+  gap: 8px;
+
+`;
+
+export const TitleWrapper = styled.div`
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+`;
+
+export const Title = styled.p`
+    color: ${({ theme }) => theme.colors.textWhite};
+    font-size: 1.8rem;
+    font-weight: 400;
+    letter-spacing: 2px;  
+`;
+
+export const Subtitle = styled.p`
+  color: ${({ theme }) => theme.colors.textWhite};
+  font-size: 1.4rem;
+  font-weight: 200;
+  letter-spacing: 1.5px;  
+`;
+
+export const Image = styled.img`
+  width: 40%;
+
+  @media (min-width:480px) {
+
+    width: 230px;
   }
 
-  p {
-    font-size: 20px;
-    margin-top: 24px;
-    line-height: 32px;
-    @media (max-width: 720px) {
-      font-size: 16px;
-      margin-top: 0;
-    }
+`;
+
+export const PlacesContainer = styled.div`
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 4px;
+
+  width: fit-content;
+  max-width: 85%;
+  min-width: 60%;
+
+  margin-top: 16px;
+
+  @media (min-width:720px) {
+    
+    max-width: 45%;
+    min-width: 30%;
   }
 
-  img {
-    width: 25%;
-  }
+`;
+
+export const TextButton = styled.button`
+
+  outline: none;
+  border: none;
+  padding: 8px 8px;
+  background: none;
+  color: ${({ theme }) => theme.colors.textWhite};
+
+  font-weight: 200;
+  letter-spacing: 1.4px;
+  font-size: 1.1rem;
+
 `;

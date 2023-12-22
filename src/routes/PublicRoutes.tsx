@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { Home, Weather } from '../ui/pages';
+import { Weather } from '../ui/pages';
 
 export const PublicRoutes = (): JSX.Element => (
   <Switch>

@@ -5,4 +5,8 @@ export const theme = {
     textWhite: '#FFFFFF',
     textGray: '#D4D4D4',
   },
+
+  background: {
+    rainy: '#585E6E',
+  },
 };

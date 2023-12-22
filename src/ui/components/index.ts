@@ -1,5 +1,7 @@
-import { Button } from './ButtonExample/Button';
+import { Title } from './Title';
+import { ThermalRange } from './ThermalRange';
 
 export {
-  Button,
+  Title,
+  ThermalRange,
 };

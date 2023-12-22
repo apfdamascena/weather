@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
-// import { ArrowBack } from '@mui/icons-material';
+import React from 'react';
 
 import { Helmet } from 'react-helmet';
 import {
-  Container, WeatherArrow,
+  Container, WeatherArrowBack, Title, InfoPlaceContainer,
+  Subtitle, TemperatureDescriptionWrapper,
+  TemperatureWrapper, Temperature, TitleWrapper,
+  DescriptionWrapper, GrausWrapper,
 } from './style';
+import { ThermalRange } from '../../components';
 
 export const Weather: React.FC = () => (
   <Container>
@@ -14,7 +17,35 @@ export const Weather: React.FC = () => (
       <title>Check temperature</title>
     </Helmet>
 
-    <WeatherArrow />
+    <WeatherArrowBack />
+
+    <InfoPlaceContainer>
+
+      <TitleWrapper>
+        <Title>LONDON</Title>
+        <Subtitle>rainy</Subtitle>
+      </TitleWrapper>
+
+      <TemperatureDescriptionWrapper>
+
+        <TemperatureWrapper>
+          <Temperature>17</Temperature>
+        </TemperatureWrapper>
+
+        <DescriptionWrapper>
+          <GrausWrapper>
+            <span className="grau">&deg;</span>
+            <span className="unidade">C</span>
+          </GrausWrapper>
+
+          <ThermalRange value="teste" />
+          <ThermalRange value="teste" />
+
+        </DescriptionWrapper>
+
+      </TemperatureDescriptionWrapper>
+
+    </InfoPlaceContainer>
 
   </Container>
 );

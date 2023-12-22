@@ -9,8 +9,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
-  background: linear-gradient(0deg, rgba(43, 47, 61, 0.76) 14.92%, rgba(60, 65, 81, 0.64) 43.97%, rgba(62, 68, 84, 0.32) 72.23%, rgba(64, 70, 86, 0.00) 99.85%), #606977; 
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); 
+  background: linear-gradient(0deg, rgba(43, 47, 61, 0.76) 15.88%, rgba(60, 65, 81, 0.64) 39.18%, rgba(62, 68, 84, 0.12) 72.25%, rgba(64, 70, 86, 0.00) 99.85%), #606977; 
 
   gap: 40px;
 
@@ -54,19 +53,23 @@ export const TitleWrapper = styled.div`
   align-items: center;
   flex-direction: column;
 
+  gap: 7px;
+
 `;
 
 export const Title = styled.p`
     color: ${({ theme }) => theme.colors.textWhite};
     font-size: 2.5rem;
     font-weight: 350;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    line-height: 1;
 `;
 
 export const Subtitle = styled.p`
   color: ${({ theme }) => theme.colors.textWhite};
-  font-size: 2rem;
-  font-weight: 200;
+  font-size: 1.4rem;
+  font-weight: 100;
+  line-height: 1;
   letter-spacing: 1.5px;  
 `;
 
@@ -74,27 +77,27 @@ export const TemperatureDescriptionWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 4px;
 
-  width: 100%;
+  width: 90%;
 `;
 
 export const TemperatureWrapper = styled.div`
 
-  /* width: 90%; */
 `;
 
 export const DescriptionWrapper = styled.div`
 
-  /* width: 10%; */
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between; */
+
 
 `;
 
 export const Temperature = styled.p`
-  font-size: 7.4rem;
+  font-size: 7.5rem;
   line-height: 0.8;
-  font-weight: 400;
-  font-family: Roboto, sans-serif;
+  font-weight: 300;
 `;
 
 export const GrausWrapper = styled.div`
@@ -104,62 +107,16 @@ export const GrausWrapper = styled.div`
   justify-content: flex-end;
 
 
-
-  & .grau {
+  &.grau {
 
     font-size: 16px;
     margin-right: 2px;
 
   }
 
-  & .unidade {
+  &.unidade {
 
     font-size: 24px;
-
   }
 
 `;
-
-// export const Image = styled.img`
-//   width: 40%;
-
-//   @media (min-width:480px) {
-
-//     width: 230px;
-//   }
-
-// `;
-
-// export const PlacesContainer = styled.div`
-
-//   display: grid;
-//   grid-template-columns: repeat(3, 1fr);
-//   grid-gap: 4px;
-
-//   width: fit-content;
-//   max-width: 85%;
-//   min-width: 60%;
-
-//   margin-top: 16px;
-
-//   @media (min-width:720px) {
-
-//     max-width: 45%;
-//     min-width: 30%;
-//   }
-
-// `;
-
-// export const TextButton = styled.button`
-
-//   outline: none;
-//   border: none;
-//   padding: 8px 8px;
-//   background: none;
-//   color: ${({ theme }) => theme.colors.textWhite};
-
-//   font-weight: 200;
-//   letter-spacing: 1.4px;
-//   font-size: 1.1rem;
-
-// `;

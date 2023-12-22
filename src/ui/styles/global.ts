@@ -21,13 +21,13 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background: ${(props) => props.theme.colors.background};
     color: ${(props) => props.theme.colors.textWhite};
-    font: 400 16px 'Lato', sans-serif;
+    font: 400 16px 'Poppins', sans-serif;
 
     -webkit-font-smoothing: antialiased;
   }
 
   body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
 
   button {

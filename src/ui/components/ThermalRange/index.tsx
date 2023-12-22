@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-  Label,
+  ArrowRange, Container, Label,
 } from './style';
 
 type TitleProps = {
@@ -9,5 +9,10 @@ type TitleProps = {
 }
 
 export const ThermalRange: React.FC<TitleProps> = ({ value } : TitleProps) => (
-  <Label>{value}</Label>
+  <Container>
+    <ArrowRange />
+    <Label className="amount">20</Label>
+    <Label className="degree">&deg;</Label>
+
+  </Container>
 );

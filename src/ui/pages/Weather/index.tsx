@@ -38,7 +38,7 @@ export const Weather: React.FC = () => (
             <span className="unidade">C</span>
           </GrausWrapper>
 
-          <ThermalRange value="teste" />
+          <ThermalRange value="dawn" />
           <ThermalRange value="teste" />
 
         </DescriptionWrapper>

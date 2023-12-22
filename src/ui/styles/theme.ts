@@ -3,6 +3,7 @@ export const theme = {
     background: '#0F0F0F',
     primary: '#e1e1e6',
     textWhite: '#FFFFFF',
+    iconWhiteColor: '#B9BDC3',
     textGray: '#D4D4D4',
   },
 

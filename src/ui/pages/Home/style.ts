@@ -32,7 +32,7 @@ export const Title = styled.p`
 export const Subtitle = styled.p`
   color: ${({ theme }) => theme.colors.textWhite};
   font-size: 1.4rem;
-  font-weight: 250;
+  font-weight: 200;
   letter-spacing: 1.5px;  
 `;
 

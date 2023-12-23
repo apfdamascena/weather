@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { useNavigate } from 'react-router-dom';
 import {
   Container, TitleWrapper, Title, Subtitle,
   Image, PlacesContainer, TextButton,
@@ -9,9 +10,10 @@ import { World } from '../../assets';
 
 export const Home: React.FC = () => {
   const [places] = useState(['Dallol', 'Fairbanks', 'Londres', 'Recife', 'Vancouver', 'Yakutsk']);
+  const navigate = useNavigate();
 
   const userTapPlace = (name: string) => {
-    console.log(name);
+    navigate(`/weather/${name}`);
   };
 
   return (

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Helmet } from 'react-helmet';
+import { useNavigate } from 'react-router-dom';
 import {
   Container, WeatherArrowBack, Title, InfoPlaceContainer,
   Subtitle, TemperatureDescriptionWrapper,
@@ -13,64 +14,72 @@ import { Characteristic, ThermalRange } from '../../components';
 import { Rainy } from '../../assets';
 import { Forecast } from '../../components/Forecast';
 
-export const Weather: React.FC = () => (
-  <Container>
+export const Weather: React.FC = () => {
+  const navigate = useNavigate();
 
-    <Helmet>
-      <meta charSet="utf-8" />
-      <title>Check temperature</title>
-    </Helmet>
+  const userTapGoBack = () => {
+    navigate(-1);
+  };
 
-    <WeatherArrowBack />
+  return (
+    <Container>
 
-    <InfoPlaceContainer>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Check temperature</title>
+      </Helmet>
 
-      <TitleWrapper>
-        <Title>LONDON</Title>
-        <Subtitle>rainy</Subtitle>
-      </TitleWrapper>
+      <WeatherArrowBack onClick={userTapGoBack} />
 
-      <TemperatureDescriptionWrapper>
+      <InfoPlaceContainer>
 
-        <TemperatureWrapper>
-          <Temperature>17</Temperature>
-        </TemperatureWrapper>
+        <TitleWrapper>
+          <Title>LONDON</Title>
+          <Subtitle>rainy</Subtitle>
+        </TitleWrapper>
 
-        <DescriptionWrapper>
-          <GrausWrapper>
-            <Content className="grau">&deg;</Content>
-            <Content className="unidade">C</Content>
-          </GrausWrapper>
+        <TemperatureDescriptionWrapper>
 
-          <ThermalRangeWrapper>
+          <TemperatureWrapper>
+            <Temperature>17</Temperature>
+          </TemperatureWrapper>
 
-            <ThermalRange value="dawn" />
-            <ThermalRange value="teste" />
+          <DescriptionWrapper>
+            <GrausWrapper>
+              <Content className="grau">&deg;</Content>
+              <Content className="unidade">C</Content>
+            </GrausWrapper>
 
-          </ThermalRangeWrapper>
+            <ThermalRangeWrapper>
 
-        </DescriptionWrapper>
+              <ThermalRange />
+              <ThermalRange />
 
-      </TemperatureDescriptionWrapper>
+            </ThermalRangeWrapper>
 
-    </InfoPlaceContainer>
+          </DescriptionWrapper>
 
-    <Image src={Rainy} alt="rainy" />
+        </TemperatureDescriptionWrapper>
 
-    <ForecastWrapper>
-      <Forecast />
-      <Forecast />
-      <Forecast />
-      <Forecast />
-    </ForecastWrapper>
+      </InfoPlaceContainer>
 
-    <PlaceCharacteristicWrapper>
+      <Image src={Rainy} alt="rainy" />
 
-      <Characteristic hasRightBorder />
-      <Characteristic hasRightBorder />
-      <Characteristic hasRightBorder />
-      <Characteristic />
-    </PlaceCharacteristicWrapper>
+      <ForecastWrapper>
+        <Forecast />
+        <Forecast />
+        <Forecast />
+        <Forecast />
+      </ForecastWrapper>
 
-  </Container>
-);
+      <PlaceCharacteristicWrapper>
+
+        <Characteristic hasRightBorder />
+        <Characteristic hasRightBorder />
+        <Characteristic hasRightBorder />
+        <Characteristic />
+      </PlaceCharacteristicWrapper>
+
+    </Container>
+  );
+};

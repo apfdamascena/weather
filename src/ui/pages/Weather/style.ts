@@ -147,8 +147,7 @@ export const ForecastWrapper = styled.div`
 export const PlaceCharacteristicWrapper = styled.div`
 
   width: 98%;
-
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 4px;
+
 `;

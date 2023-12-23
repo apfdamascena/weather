@@ -8,7 +8,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
   background: linear-gradient(0deg, rgba(43, 47, 61, 0.68) 15.88%, rgba(60, 65, 81, 0.48) 39.18%, rgba(62, 68, 84, 0.02) 72.25%, rgba(64, 70, 86, 0.00) 99.85%), #606977;
 
   gap: 32px;
@@ -146,4 +146,9 @@ export const ForecastWrapper = styled.div`
 
 export const PlaceCharacteristicWrapper = styled.div`
 
+  width: 98%;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 4px;
 `;

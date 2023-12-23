@@ -9,7 +9,7 @@ import {
   ThermalRangeWrapper, Image, ForecastWrapper,
   PlaceCharacteristicWrapper,
 } from './style';
-import { ThermalRange } from '../../components';
+import { Characteristic, ThermalRange } from '../../components';
 import { Rainy } from '../../assets';
 import { Forecast } from '../../components/Forecast';
 
@@ -64,7 +64,13 @@ export const Weather: React.FC = () => (
       <Forecast />
     </ForecastWrapper>
 
-    <PlaceCharacteristicWrapper />
+    <PlaceCharacteristicWrapper>
+
+      <Characteristic hasRightBorder />
+      <Characteristic hasRightBorder />
+      <Characteristic hasRightBorder />
+      <Characteristic />
+    </PlaceCharacteristicWrapper>
 
   </Container>
 );

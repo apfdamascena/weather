@@ -9,20 +9,19 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
-  background: linear-gradient(0deg, rgba(43, 47, 61, 0.76) 15.88%, rgba(60, 65, 81, 0.64) 39.18%, rgba(62, 68, 84, 0.12) 72.25%, rgba(64, 70, 86, 0.00) 99.85%), #606977; 
+  /* background: linear-gradient(0deg, rgba(43, 47, 61, 0.76) 15.88%, rgba(60, 65, 81, 0.64) 39.18%, rgba(62, 68, 84, 0.12) 72.25%, rgba(64, 70, 86, 0.00) 99.85%), #606977;  */
+  background: linear-gradient(0deg, rgba(43, 47, 61, 0.68) 15.88%, rgba(60, 65, 81, 0.48) 39.18%, rgba(62, 68, 84, 0.02) 72.25%, rgba(64, 70, 86, 0.00) 99.85%), #606977;
 
-  gap: 40px;
+  gap: 32px;
 
 `;
 
 export const WeatherArrowBack = styled(ArrowBack)`
   align-self: flex-start;
-  margin-top: 16px;
-  margin-left: 16px;
 
+  margin-top: 16px !important;
+  margin-left: 12px !important;
   font-size: 32px !important;
-
-    
 `;
 
 export const WeatherArrowUp = styled(ArrowUpward)`
@@ -40,10 +39,10 @@ export const InfoPlaceContainer = styled.div`
   align-items: center;
   flex-direction: column;
 
-
   width: fit-content;
 
-  gap: 22px;
+
+  gap: 24px;
 `;
 
 export const TitleWrapper = styled.div`
@@ -82,41 +81,64 @@ export const TemperatureDescriptionWrapper = styled.div`
 `;
 
 export const TemperatureWrapper = styled.div`
-
+  margin-top: 8px;
 `;
 
 export const DescriptionWrapper = styled.div`
 
-  /* display: flex;
+  display: flex;
+  justify-content: space-between;
   flex-direction: column;
-  justify-content: space-between; */
-
 
 `;
 
+export const ThermalRangeWrapper = styled.div`
+
+  margin-top: 8px;
+`;
+
 export const Temperature = styled.p`
-  font-size: 7.5rem;
+  font-size: 7.8rem;
   line-height: 0.8;
   font-weight: 300;
 `;
 
 export const GrausWrapper = styled.div`
-
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
+`;
 
+export const Content = styled.span`
 
   &.grau {
 
-    font-size: 16px;
-    margin-right: 2px;
+    font-size: 13px;
+    margin-top: 5px;
+    margin-right: 3px;
+    font-weight: 300;
 
   }
 
   &.unidade {
 
-    font-size: 24px;
+    font-size: 27px; 
+    font-weight: 300;
   }
 
+`;
+
+export const Image = styled.img`
+  width: 30%;
+
+  @media (min-width:480px) {
+
+    width: 230px;
+  }
+
+`;
+
+export const ForecastWrapper = styled.div`
+  background-color: red;
+  width: 90%;
 `;

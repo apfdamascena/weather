@@ -7,9 +7,11 @@ import {
   TemperatureWrapper, Temperature, TitleWrapper,
   DescriptionWrapper, GrausWrapper, Content,
   ThermalRangeWrapper, Image, ForecastWrapper,
+  PlaceCharacteristicWrapper,
 } from './style';
 import { ThermalRange } from '../../components';
 import { Rainy } from '../../assets';
+import { Forecast } from '../../components/Forecast';
 
 export const Weather: React.FC = () => (
   <Container>
@@ -56,8 +58,13 @@ export const Weather: React.FC = () => (
     <Image src={Rainy} alt="rainy" />
 
     <ForecastWrapper>
-      <h2>oi</h2>
+      <Forecast />
+      <Forecast />
+      <Forecast />
+      <Forecast />
     </ForecastWrapper>
+
+    <PlaceCharacteristicWrapper />
 
   </Container>
 );

@@ -22,8 +22,7 @@ export const Image = styled.img`
   width: 50%;
 
   @media (min-width:480px) {
-
-    width: 230px;
+    width: 60px;
   }
 
 `;

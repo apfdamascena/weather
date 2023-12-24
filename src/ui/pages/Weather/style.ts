@@ -132,7 +132,7 @@ export const Image = styled.img`
 
   @media (min-width:480px) {
 
-    width: 150px;
+    width: 145px;
   }
 `;
 
@@ -142,6 +142,11 @@ export const ForecastWrapper = styled.div`
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+
+  @media (min-width: 600px) {
+  
+    width: 440px;
+  }
 `;
 
 export const PlaceCharacteristicWrapper = styled.div`
@@ -149,5 +154,9 @@ export const PlaceCharacteristicWrapper = styled.div`
   width: 98%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+
+  @media (min-width: 600px) {
+    width: 440px;
+  }
 
 `;

@@ -70,7 +70,11 @@ export const Weather: React.FC = () => {
         <TemperatureDescriptionWrapper>
 
           <TemperatureWrapper>
-            <Temperature>{weatherInfo.temp_c}</Temperature>
+            {
+              (-2 < 0 && <Temperature className="signal">-</Temperature>)
+            }
+
+            <Temperature>2</Temperature>
           </TemperatureWrapper>
 
           <DescriptionWrapper>
@@ -81,8 +85,8 @@ export const Weather: React.FC = () => {
 
             <ThermalRangeWrapper>
 
-              <ThermalRange up temperature={`${forecast?.day.maxtemp_c || 0}`} />
-              <ThermalRange temperature={`${forecast?.day.mintemp_c || 0}`} />
+              <ThermalRange up temperature={`${forecast?.day.maxtemp_c.toFixed(0) || 0}`} />
+              <ThermalRange temperature={`${forecast?.day.mintemp_c.toFixed(0) || 0}`} />
 
             </ThermalRangeWrapper>
 

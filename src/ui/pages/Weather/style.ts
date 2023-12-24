@@ -75,19 +75,35 @@ export const TemperatureDescriptionWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  
+  justify-content: center;
 
   width: 90%;
 `;
 
 export const TemperatureWrapper = styled.div`
   margin-top: 8px;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
 `;
+
+export type DescriptionWrapperProps = {
+  positive: boolean;
+}
 
 export const DescriptionWrapper = styled.div`
 
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+  
+  position: relative;
+  right: 3px;
+  top: 0.09rem;
+
+  @media (min-width:600px) {
+
+    top: 0.3rem;
+  }
+
 
 `;
 
@@ -97,9 +113,14 @@ export const ThermalRangeWrapper = styled.div`
 `;
 
 export const Temperature = styled.p`
-  font-size: 7.8rem;
+  font-size: 7.6rem;
   line-height: 0.8;
   font-weight: 300;
+
+  &.signal {
+    font-size: 5rem;
+    font-weight: 400;
+  }
 `;
 
 export const GrausWrapper = styled.div`
@@ -109,6 +130,9 @@ export const GrausWrapper = styled.div`
 `;
 
 export const Content = styled.span`
+
+  position: relative;
+  right: 6px;
 
   &.grau {
 
@@ -143,7 +167,7 @@ export const ForecastWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 
-  @media (min-width: 600px) {
+  @media (min-width: 560px) {
   
     width: 440px;
   }
@@ -155,7 +179,7 @@ export const PlaceCharacteristicWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 
-  @media (min-width: 600px) {
+  @media (min-width: 560px) {
     width: 440px;
   }
 

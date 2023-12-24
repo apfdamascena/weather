@@ -18,6 +18,5 @@ export const ThermalRange: React.FC<ThermalRangeProps> = ({
     <ArrowRange toUpward={up} />
     <Label className="amount">{temperature}</Label>
     <Label className="degree">&deg;</Label>
-
   </Container>
 );

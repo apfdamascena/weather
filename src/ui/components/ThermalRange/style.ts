@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { ArrowRightAlt } from '@mui/icons-material';
 
 export const Container = styled.div`
-
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -24,15 +23,18 @@ export const ArrowRange = styled(ArrowRightAlt)<ArrowRangeProps>`
 
 export const Label = styled.p`
     color: ${({ theme }) => theme.colors.textWhite};
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     
     font-weight: 200;
     letter-spacing: 1px;
     text-align: right;
-    
+    width: 95%;
 
+    position: relative;
+    right: 4px;
+  
     &.degree {
-
+        width: 5%;
         font-size: 9px;
         margin-bottom: 6px;
         margin-left: 1px;

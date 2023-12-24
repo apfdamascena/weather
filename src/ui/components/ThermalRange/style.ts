@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ArrowRightAlt } from '@mui/icons-material';
+import { boolean } from 'zod';
 
 export const Container = styled.div`
 
@@ -8,8 +9,17 @@ export const Container = styled.div`
     justify-content: flex-start;
 `;
 
-export const ArrowRange = styled(ArrowRightAlt)`
-    transform: rotate(90deg);
+export type ArrowRangeProps = {
+  toUpward?: boolean
+};
+
+export const ArrowRange = styled(ArrowRightAlt)<ArrowRangeProps>`
+    transform: ${(props) => {
+    const multiplier = props.toUpward ? -1 : 1;
+    const degrees = multiplier * 90;
+    return `rotate(${degrees}deg)`;
+  }};
+
     color: ${({ theme }) => theme.colors.iconWhiteColor};
 `;
 
@@ -19,6 +29,7 @@ export const Label = styled.p`
     
     font-weight: 200;
     letter-spacing: 1px;
+    text-align: right;
     
 
     &.degree {
@@ -26,8 +37,5 @@ export const Label = styled.p`
         font-size: 9px;
         margin-bottom: 6px;
         margin-left: 1px;
-
-        /* font-size: 10px !important; */
-
     }
 `;

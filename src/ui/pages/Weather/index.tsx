@@ -3,7 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { AstronomyInfoDefault, WeatherInfoDefault, weatherApi } from '../../../api/weather-api';
+import {
+  AstronomyInfoDefault, ForecastContent, HourForecast, WeatherInfoDefault, weatherApi,
+} from '../../../api/weather-api';
 import {
   Container, WeatherArrowBack, Title, InfoPlaceContainer,
   Subtitle, TemperatureDescriptionWrapper,
@@ -20,30 +22,31 @@ export const Weather: React.FC = () => {
   const navigate = useNavigate();
   const { city } = useParams();
 
+  const searchCity = city || '';
+
   const [weatherInfo, setWeatherInfo] = useState(WeatherInfoDefault);
   const [astronomyInfo, setAstronomyInfo] = useState(AstronomyInfoDefault);
+  const [forecast, setForecast] = useState<ForecastContent>();
+  const [hours, setHours] = useState<HourForecast[]>();
 
   const userTapGoBack = () => {
     navigate(-1);
   };
 
   const getWeather = async () => {
-    const searchCity = city || '';
-    const { current } = await weatherApi.getWeatherFrom(searchCity);
-    current.wind_kph /= 3.6;
-    setWeatherInfo(current);
-  };
-
-  const getAstronomy = async () => {
-    const searchCity = city || '';
-    const { astronomy } = await weatherApi.getAstronomyFrom(searchCity);
-    setAstronomyInfo(astronomy);
+    const response = await weatherApi.getForecastFrom(searchCity);
+    console.log(response);
+    if (response) {
+      setWeatherInfo(response.current);
+      setAstronomyInfo(response.forecast.forecastday[0]);
+      setForecast(response.forecast.forecastday[0]);
+      setHours(response.forecast.forecastday[0].hour);
+    }
   };
 
   useEffect(() => {
     getWeather();
-    getAstronomy();
-  });
+  }, []);
 
   return (
     <Container>
@@ -61,7 +64,7 @@ export const Weather: React.FC = () => {
 
         <TitleWrapper>
           <Title>{city?.toUpperCase()}</Title>
-          <Subtitle>rainy</Subtitle>
+          <Subtitle>{weatherInfo.condition.text}</Subtitle>
         </TitleWrapper>
 
         <TemperatureDescriptionWrapper>
@@ -78,8 +81,8 @@ export const Weather: React.FC = () => {
 
             <ThermalRangeWrapper>
 
-              <ThermalRange />
-              <ThermalRange />
+              <ThermalRange up temperature={`${forecast?.day.maxtemp_c || 0}`} />
+              <ThermalRange temperature={`${forecast?.day.mintemp_c || 0}`} />
 
             </ThermalRangeWrapper>
 
@@ -92,10 +95,10 @@ export const Weather: React.FC = () => {
       <Image src={Rainy} alt="rainy" />
 
       <ForecastWrapper>
-        <Forecast title="dawn" value="-8" />
-        <Forecast title="morning" value="-5" />
-        <Forecast title="afternoon" value="-2" />
-        <Forecast title="night" value="-7" />
+        <Forecast title="dawn" value={`${hours ? hours[2].temp_c : '--'}`} />
+        <Forecast title="morning" value={`${hours ? hours[8].temp_c : '--'}`} />
+        <Forecast title="afternoon" value={`${hours ? hours[14].temp_c : '--'}`} />
+        <Forecast title="night" value={`${hours ? hours[20].temp_c : '--'}`} />
       </ForecastWrapper>
 
       <PlaceCharacteristicWrapper>

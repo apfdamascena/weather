@@ -1,17 +1,22 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 
 import {
   ArrowRange, Container, Label,
 } from './style';
 
-// type TitleProps = {
-//     value: string;
-// }
+type ThermalRangeProps = {
+    up?: boolean;
+    temperature: string;
+}
 
-export const ThermalRange: React.FC = () => (
+export const ThermalRange: React.FC<ThermalRangeProps> = ({
+  up,
+  temperature,
+}: ThermalRangeProps) => (
   <Container>
-    <ArrowRange />
-    <Label className="amount">20</Label>
+    <ArrowRange toUpward={up} />
+    <Label className="amount">{temperature}</Label>
     <Label className="degree">&deg;</Label>
 
   </Container>

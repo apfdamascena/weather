@@ -1,13 +1,4 @@
 import axios from 'axios';
-import { env } from '../env';
-
-export const api = axios.create({
-  baseURL: 'https://api.weatherapi.com/v1',
-  params: {
-    key: env.REACT_APP_WEATHER_API_KEY,
-  },
-
-});
 
 export type WeatherParams = {
   city: string;

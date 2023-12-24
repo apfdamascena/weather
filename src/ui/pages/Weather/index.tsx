@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Helmet } from 'react-helmet';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   Container, WeatherArrowBack, Title, InfoPlaceContainer,
   Subtitle, TemperatureDescriptionWrapper,
@@ -16,6 +16,10 @@ import { Forecast } from '../../components/Forecast';
 
 export const Weather: React.FC = () => {
   const navigate = useNavigate();
+  const { city } = useParams();
+
+  const [weather, setWeather] = useState('rainy');
+  const [temperature, setTemperature] = useState(17);
 
   const userTapGoBack = () => {
     navigate(-1);
@@ -34,14 +38,14 @@ export const Weather: React.FC = () => {
       <InfoPlaceContainer>
 
         <TitleWrapper>
-          <Title>LONDON</Title>
-          <Subtitle>rainy</Subtitle>
+          <Title>{city?.toUpperCase()}</Title>
+          <Subtitle>{weather}</Subtitle>
         </TitleWrapper>
 
         <TemperatureDescriptionWrapper>
 
           <TemperatureWrapper>
-            <Temperature>17</Temperature>
+            <Temperature>{`${temperature}`}</Temperature>
           </TemperatureWrapper>
 
           <DescriptionWrapper>
@@ -66,18 +70,17 @@ export const Weather: React.FC = () => {
       <Image src={Rainy} alt="rainy" />
 
       <ForecastWrapper>
-        <Forecast />
-        <Forecast />
-        <Forecast />
-        <Forecast />
+        <Forecast title="dawn" value="-8" />
+        <Forecast title="morning" value="-5" />
+        <Forecast title="afternoon" value="-2" />
+        <Forecast title="night" value="-7" />
       </ForecastWrapper>
 
       <PlaceCharacteristicWrapper>
-
-        <Characteristic hasRightBorder />
-        <Characteristic hasRightBorder />
-        <Characteristic hasRightBorder />
-        <Characteristic />
+        <Characteristic hasRightBorder title="wind speed" value="5.1 m/s" />
+        <Characteristic hasRightBorder title="sunrise" value="5:14 AM" />
+        <Characteristic hasRightBorder title="sunset" value="7:25 PM" />
+        <Characteristic title="humidity" value="52%" />
       </PlaceCharacteristicWrapper>
 
     </Container>

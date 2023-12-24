@@ -9,13 +9,19 @@ import {
 } from './style';
 import { SunWithCloud } from '../../assets';
 
-export const Forecast: React.FC = () => (
+export type ForecastProps = {
+
+  title: string;
+  value: string;
+};
+
+export const Forecast: React.FC<ForecastProps> = ({ title, value }: ForecastProps) => (
   <Container>
 
-    <Title>dawn</Title>
+    <Title>{title}</Title>
     <Image src={SunWithCloud} />
     <DescriptionWrapper>
-      <Label>20</Label>
+      <Label>{value}</Label>
       <Label className="degree">&deg;</Label>
       <Label>C</Label>
     </DescriptionWrapper>

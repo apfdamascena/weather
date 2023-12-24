@@ -9,16 +9,17 @@ import {
 
 export type CharacteristicProps = {
   hasRightBorder?: Boolean;
+  title: string;
+  value: string;
 }
 
 export const Characteristic:
-  React.FC<CharacteristicProps> = ({ hasRightBorder }: CharacteristicProps) => (
+  React.FC<CharacteristicProps> = ({ hasRightBorder, title, value }: CharacteristicProps) => (
 
     <Container borderRight={hasRightBorder}>
       <div className="content">
-        <Title>wind speed</Title>
-        <Subtitle>5.1 m/s</Subtitle>
+        <Title>{title}</Title>
+        <Subtitle>{value}</Subtitle>
       </div>
-
     </Container>
   );

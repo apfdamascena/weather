@@ -1,3 +1,4 @@
+import './env';
 import { ThemeProvider } from 'styled-components';
 import { Routes } from './routes';
 import { GlobalStyle } from './ui/styles/global';

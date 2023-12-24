@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import { Helmet } from 'react-helmet';
 import { useNavigate, useParams } from 'react-router-dom';
+
+import { AstronomyInfoDefault, WeatherInfoDefault, weatherApi } from '../../../api/weather-api';
 import {
   Container, WeatherArrowBack, Title, InfoPlaceContainer,
   Subtitle, TemperatureDescriptionWrapper,
@@ -18,19 +20,39 @@ export const Weather: React.FC = () => {
   const navigate = useNavigate();
   const { city } = useParams();
 
-  const [weather, setWeather] = useState('rainy');
-  const [temperature, setTemperature] = useState(17);
+  const [weatherInfo, setWeatherInfo] = useState(WeatherInfoDefault);
+  const [astronomyInfo, setAstronomyInfo] = useState(AstronomyInfoDefault);
 
   const userTapGoBack = () => {
     navigate(-1);
   };
+
+  const getWeather = async () => {
+    const searchCity = city || '';
+    const { current } = await weatherApi.getWeatherFrom(searchCity);
+    current.wind_kph /= 3.6;
+    setWeatherInfo(current);
+  };
+
+  const getAstronomy = async () => {
+    const searchCity = city || '';
+    const { astronomy } = await weatherApi.getAstronomyFrom(searchCity);
+    setAstronomyInfo(astronomy);
+  };
+
+  useEffect(() => {
+    getWeather();
+    getAstronomy();
+  });
 
   return (
     <Container>
 
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Check temperature</title>
+        <title>
+          Check temperature
+        </title>
       </Helmet>
 
       <WeatherArrowBack onClick={userTapGoBack} />
@@ -39,13 +61,13 @@ export const Weather: React.FC = () => {
 
         <TitleWrapper>
           <Title>{city?.toUpperCase()}</Title>
-          <Subtitle>{weather}</Subtitle>
+          <Subtitle>rainy</Subtitle>
         </TitleWrapper>
 
         <TemperatureDescriptionWrapper>
 
           <TemperatureWrapper>
-            <Temperature>{`${temperature}`}</Temperature>
+            <Temperature>{weatherInfo.temp_c}</Temperature>
           </TemperatureWrapper>
 
           <DescriptionWrapper>
@@ -77,10 +99,10 @@ export const Weather: React.FC = () => {
       </ForecastWrapper>
 
       <PlaceCharacteristicWrapper>
-        <Characteristic hasRightBorder title="wind speed" value="5.1 m/s" />
-        <Characteristic hasRightBorder title="sunrise" value="5:14 AM" />
-        <Characteristic hasRightBorder title="sunset" value="7:25 PM" />
-        <Characteristic title="humidity" value="52%" />
+        <Characteristic hasRightBorder title="wind speed" value={`${weatherInfo.wind_kph.toFixed(2)} m/s`} />
+        <Characteristic hasRightBorder title="sunrise" value={astronomyInfo.astro.sunrise} />
+        <Characteristic hasRightBorder title="sunset" value={astronomyInfo.astro.sunset} />
+        <Characteristic title="humidity" value={`${weatherInfo.humidity}%`} />
       </PlaceCharacteristicWrapper>
 
     </Container>

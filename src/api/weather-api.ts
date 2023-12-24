@@ -11,6 +11,7 @@ export type WeatherInfo = {
     temp_c: number;
     condition: {
       text: string;
+      icon: string;
     }
 }
 

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { ArrowRightAlt } from '@mui/icons-material';
-import { boolean } from 'zod';
 
 export const Container = styled.div`
 

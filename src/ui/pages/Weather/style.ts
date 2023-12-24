@@ -132,7 +132,7 @@ export const Image = styled.img`
 
   @media (min-width:480px) {
 
-    width: 230px;
+    width: 150px;
   }
 `;
 

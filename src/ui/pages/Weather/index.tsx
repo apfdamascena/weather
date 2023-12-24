@@ -71,10 +71,10 @@ export const Weather: React.FC = () => {
 
           <TemperatureWrapper>
             {
-              (-2 < 0 && <Temperature className="signal">-</Temperature>)
+              (weatherInfo.temp_c < 0 && <Temperature className="signal">-</Temperature>)
             }
 
-            <Temperature>2</Temperature>
+            <Temperature>{Math.abs(weatherInfo.temp_c)}</Temperature>
           </TemperatureWrapper>
 
           <DescriptionWrapper>

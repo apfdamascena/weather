@@ -132,7 +132,8 @@ export const GrausWrapper = styled.div`
 export const Content = styled.span`
 
   position: relative;
-  right: 6px;
+  right: 4px;
+  bottom: 4px;
 
   &.grau {
 

@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import {
-  AstronomyInfoDefault, ForecastContent, HourForecast, WeatherInfoDefault, weatherApi,
-} from '../../../api/weather-api';
+import { ForecastDefault, ForecastData } from '../../../api';
+import { weatherApi } from '../../../api/weather-api';
+
 import {
   Container, WeatherArrowBack, Title, InfoPlaceContainer,
   Subtitle, TemperatureDescriptionWrapper,
@@ -22,31 +22,34 @@ export const Weather: React.FC = () => {
   const navigate = useNavigate();
   const { city } = useParams();
 
-  const searchCity = city || '';
+  const [weather, setWeather] = useState<ForecastData>(ForecastDefault);
 
-  const [weatherInfo, setWeatherInfo] = useState(WeatherInfoDefault);
-  const [astronomyInfo, setAstronomyInfo] = useState(AstronomyInfoDefault);
-  const [forecast, setForecast] = useState<ForecastContent>();
-  const [hours, setHours] = useState<HourForecast[]>();
+  const weatherDetails = weather.current;
+  const forecastday = weather.forecast.forecastday[0];
+  const maximumTemperature = forecastday.day.maxtemp_c;
+  const minimumTemperature = forecastday.day.mintemp_c;
+
+  const searchCity = city || '';
 
   const userTapGoBack = () => {
     navigate(-1);
   };
 
   const getWeather = async () => {
-    const response = await weatherApi.getForecastFrom(searchCity);
-    console.log(response);
-    if (response) {
-      setWeatherInfo(response.current);
-      setAstronomyInfo(response.forecast.forecastday[0]);
-      setForecast(response.forecast.forecastday[0]);
-      setHours(response.forecast.forecastday[0].hour);
-    }
+    const data = await weatherApi.getForecastFrom(searchCity);
+    if (!data) return;
+    setWeather(data);
   };
 
   useEffect(() => {
     getWeather();
   }, []);
+
+  const getTemperatureFor = (time: number): string => {
+    const { hour } = forecastday;
+    if (!hour || hour.length < 24) return '--';
+    return `${hour[time].temp_c}`;
+  };
 
   return (
     <Container>
@@ -64,17 +67,17 @@ export const Weather: React.FC = () => {
 
         <TitleWrapper>
           <Title>{city?.toUpperCase()}</Title>
-          <Subtitle>{weatherInfo.condition.text}</Subtitle>
+          <Subtitle>{weatherDetails.condition.text}</Subtitle>
         </TitleWrapper>
 
         <TemperatureDescriptionWrapper>
 
           <TemperatureWrapper>
             {
-              (weatherInfo.temp_c < 0 && <Temperature className="signal">-</Temperature>)
+              (weatherDetails.temp_c < 0 && <Temperature className="signal">-</Temperature>)
             }
 
-            <Temperature>{Math.abs(weatherInfo.temp_c)}</Temperature>
+            <Temperature>{Math.abs(weatherDetails.temp_c)}</Temperature>
           </TemperatureWrapper>
 
           <DescriptionWrapper>
@@ -85,8 +88,8 @@ export const Weather: React.FC = () => {
 
             <ThermalRangeWrapper>
 
-              <ThermalRange up temperature={`${forecast?.day.maxtemp_c.toFixed(0) || 0}`} />
-              <ThermalRange temperature={`${forecast?.day.mintemp_c.toFixed(0) || 0}`} />
+              <ThermalRange up temperature={`${maximumTemperature}`} />
+              <ThermalRange temperature={`${minimumTemperature}`} />
 
             </ThermalRangeWrapper>
 
@@ -99,17 +102,17 @@ export const Weather: React.FC = () => {
       <Image src={Rainy} alt="rainy" />
 
       <ForecastWrapper>
-        <Forecast title="dawn" value={`${hours ? hours[2].temp_c : '--'}`} />
-        <Forecast title="morning" value={`${hours ? hours[8].temp_c : '--'}`} />
-        <Forecast title="afternoon" value={`${hours ? hours[14].temp_c : '--'}`} />
-        <Forecast title="night" value={`${hours ? hours[20].temp_c : '--'}`} />
+        <Forecast title="dawn" value={getTemperatureFor(2)} />
+        <Forecast title="morning" value={getTemperatureFor(8)} />
+        <Forecast title="afternoon" value={getTemperatureFor(14)} />
+        <Forecast title="night" value={getTemperatureFor(20)} />
       </ForecastWrapper>
 
       <PlaceCharacteristicWrapper>
-        <Characteristic hasRightBorder title="wind speed" value={`${weatherInfo.wind_kph.toFixed(2)} m/s`} />
-        <Characteristic hasRightBorder title="sunrise" value={astronomyInfo.astro.sunrise} />
-        <Characteristic hasRightBorder title="sunset" value={astronomyInfo.astro.sunset} />
-        <Characteristic title="humidity" value={`${weatherInfo.humidity}%`} />
+        <Characteristic hasRightBorder title="wind speed" value={`${weatherDetails.wind_kph.toFixed(2)} m/s`} />
+        <Characteristic hasRightBorder title="sunrise" value={forecastday.astro.sunrise} />
+        <Characteristic hasRightBorder title="sunset" value={forecastday.astro.sunset} />
+        <Characteristic title="humidity" value={`${weatherDetails.humidity}%`} />
       </PlaceCharacteristicWrapper>
 
     </Container>

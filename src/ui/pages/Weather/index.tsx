@@ -7,7 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useWeatherTheme } from '../../hooks/theme';
 import { Moon, Sun } from '../../assets';
 
-import { getCurrentWeater, chooseIcon, getCondition } from '../../utils';
+import { getCurrentWeater, chooseIcon } from '../../utils';
 import { ForecastDefault, ForecastData } from '../../../api';
 import { weatherApi } from '../../../api/weather-api';
 

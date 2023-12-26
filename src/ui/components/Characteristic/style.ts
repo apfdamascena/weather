@@ -26,7 +26,7 @@ export const Container = styled.div<ContainerProps>`
 
 export const Title = styled.p`
   font-size: 0.9rem;
-  font-weight: 100;
+  font-weight: 200;
   letter-spacing: 0.8px;
 
   color: ${({ theme }) => theme.colors.secondary};

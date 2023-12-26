@@ -8,21 +8,21 @@ export const Container = styled.div`
 `;
 
 export type ArrowRangeProps = {
-  toUpward?: boolean
+  upArrow?: boolean
 };
 
 export const ArrowRange = styled(ArrowRightAlt)<ArrowRangeProps>`
     transform: ${(props) => {
-    const multiplier = props.toUpward ? -1 : 1;
+    const multiplier = props.upArrow ? -1 : 1;
     const degrees = multiplier * 90;
     return `rotate(${degrees}deg)`;
   }};
 
-    color: ${({ theme }) => theme.colors.iconWhiteColor};
+    color: ${({ theme }) => theme.colors.icon};
 `;
 
 export const Label = styled.p`
-    color: ${({ theme }) => theme.colors.textWhite};
+    color: ${({ theme }) => theme.colors.primary};
     font-size: 0.9rem;
     
     font-weight: 200;

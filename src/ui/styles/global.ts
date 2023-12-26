@@ -20,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     background: ${(props) => props.theme.colors.background};
-    color: ${(props) => props.theme.colors.textWhite};
+    color: ${(props) => props.theme.colors.primary};
     font: 400 16px 'Poppins', sans-serif;
 
     -webkit-font-smoothing: antialiased;

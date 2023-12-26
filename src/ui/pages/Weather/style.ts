@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ArrowBack, ArrowUpward, ArrowDownward } from '@mui/icons-material';
+import { ArrowBack } from '@mui/icons-material';
 
 export const Container = styled.div`
   width: 100vw;
@@ -9,8 +9,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
-  background: linear-gradient(0deg, rgba(43, 47, 61, 0.68) 15.88%, rgba(60, 65, 81, 0.48) 39.18%, rgba(62, 68, 84, 0.02) 72.25%, rgba(64, 70, 86, 0.00) 99.85%), #606977;
-
+  background: ${({ theme }) => theme.colors.background};
   gap: 32px;
 
 `;
@@ -21,14 +20,6 @@ export const WeatherArrowBack = styled(ArrowBack)`
   margin-top: 16px !important;
   margin-left: 12px !important;
   font-size: 32px !important;
-`;
-
-export const WeatherArrowUp = styled(ArrowUpward)`
-
-`;
-
-export const WeatherArrowDown = styled(ArrowDownward)`
-
 `;
 
 export const InfoPlaceContainer = styled.div`
@@ -56,7 +47,7 @@ export const TitleWrapper = styled.div`
 `;
 
 export const Title = styled.p`
-    color: ${({ theme }) => theme.colors.textWhite};
+    color: ${({ theme }) => theme.colors.primary};
     font-size: 2.5rem;
     font-weight: 350;
     letter-spacing: 2px;
@@ -64,7 +55,7 @@ export const Title = styled.p`
 `;
 
 export const Subtitle = styled.p`
-  color: ${({ theme }) => theme.colors.textWhite};
+  color: ${({ theme }) => theme.colors.primary};
   font-size: 1.4rem;
   font-weight: 100;
   line-height: 1;
@@ -85,7 +76,6 @@ export const TemperatureWrapper = styled.div`
   margin-top: 8px;
   display: flex;
   align-items: center;
-  /* justify-content: center; */
 `;
 
 export type DescriptionWrapperProps = {
@@ -93,7 +83,6 @@ export type DescriptionWrapperProps = {
 }
 
 export const DescriptionWrapper = styled.div`
-
   
   position: relative;
   right: 3px;
@@ -167,10 +156,15 @@ export const ForecastWrapper = styled.div`
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  position: relative;
+  bottom: 8px;
+
 
   @media (min-width: 560px) {
   
     width: 440px;
+    bottom: 4px;
+
   }
 `;
 
@@ -180,8 +174,10 @@ export const PlaceCharacteristicWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 
+  
   @media (min-width: 560px) {
     width: 440px;
+    position: relative;
+    bottom: 4px;
   }
-
 `;

@@ -9,13 +9,14 @@ export const Container = styled.div`
 
     margin-top: 8px;
     
-    gap: 4px;
+    gap: 8px;
     
 `;
 
 export const Title = styled.p`
   font-weight: 200;
   font-size: 1rem;
+  letter-spacing: 0.5px;
 `;
 
 export const Image = styled.img`
@@ -38,7 +39,7 @@ export const DescriptionWrapper = styled.div`
 `;
 
 export const Label = styled.p`
-    color: ${({ theme }) => theme.colors.textWhite};
+    color: ${({ theme }) => theme.colors.primary};
     font-size: 1.1rem;
     
     font-weight: 200;

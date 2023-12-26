@@ -1,30 +1,45 @@
 import React from 'react';
 
+import { useWeatherTheme } from '../../hooks/theme';
 import {
   Container,
-  Image,
   Title,
   DescriptionWrapper,
   Label,
 } from './style';
-import { SunWithCloud } from '../../assets';
 
 export type ForecastProps = {
-
   title: string;
   value: string;
+  children: React.ReactNode;
 };
 
-export const Forecast: React.FC<ForecastProps> = ({ title, value }: ForecastProps) => (
-  <Container>
+export const Forecast: React.FC<ForecastProps> = ({
+  title, value, children,
+}: ForecastProps) => {
+  const { theme } = useWeatherTheme();
 
-    <Title>{title}</Title>
-    <Image src={SunWithCloud} />
-    <DescriptionWrapper>
-      <Label>{value}</Label>
-      <Label className="degree">&deg;</Label>
-      <Label>C</Label>
-    </DescriptionWrapper>
+  const iconStyle = {
+    fill: theme.colors.icon,
+    width: '50px',
+    height: '50px',
+    stroke: theme.colors.icon,
+  };
 
-  </Container>
-);
+  return (
+    <Container>
+
+      <Title>{title}</Title>
+      {
+        React.cloneElement(children as React.ReactElement, { style: iconStyle })
+      }
+      <DescriptionWrapper>
+        <Label>{value}</Label>
+        <Label className="degree">&deg;</Label>
+        <Label>C</Label>
+      </DescriptionWrapper>
+
+    </Container>
+
+  );
+};

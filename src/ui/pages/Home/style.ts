@@ -11,6 +11,8 @@ export const Container = styled.div`
 
   gap: 32px;
 
+  background-color: ${({ theme }) => theme.colors.home};
+
 `;
 
 export const TitleWrapper = styled.div`
@@ -24,7 +26,7 @@ export const TitleWrapper = styled.div`
 `;
 
 export const Title = styled.p`
-    color: ${({ theme }) => theme.colors.textWhite};
+    color: ${({ theme }) => theme.colors.homePrimary};
     font-size: 2.3rem;
     font-weight: 300;
     letter-spacing: 2px;  
@@ -32,7 +34,7 @@ export const Title = styled.p`
 `;
 
 export const Subtitle = styled.p`
-  color: ${({ theme }) => theme.colors.textWhite};
+  color: ${({ theme }) => theme.colors.homePrimary};
   font-size: 1.6rem;
   font-weight: 100;
   letter-spacing: 1px;  
@@ -74,7 +76,7 @@ export const TextButton = styled.button`
   border: none;
   padding: 8px 8px;
   background: none;
-  color: ${({ theme }) => theme.colors.textWhite};
+  color: ${({ theme }) => theme.colors.homePrimary};
 
   font-weight: 200;
   letter-spacing: 1.4px;

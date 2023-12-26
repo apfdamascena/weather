@@ -21,6 +21,9 @@ export type Forecast = {
 
 export type HourForecast = {
     temp_c: number;
+    condition: {
+      text: string;
+    }
   }
 
 export type ForecastData = {

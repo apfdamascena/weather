@@ -1,26 +1,40 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { ReactNode, useEffect, useState } from 'react';
 
 import { Helmet } from 'react-helmet';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { useWeatherTheme } from '../../hooks/theme';
+import { Moon, Sun } from '../../assets';
+
+import { getCurrentWeater, chooseIcon, getCondition } from '../../utils';
 import { ForecastDefault, ForecastData } from '../../../api';
 import { weatherApi } from '../../../api/weather-api';
 
+import { Characteristic, ThermalRange } from '../../components';
+import { Forecast } from '../../components/Forecast';
+
 import {
-  Container, WeatherArrowBack, Title, InfoPlaceContainer,
+  Container,
+  WeatherArrowBack,
+  Title, InfoPlaceContainer,
   Subtitle, TemperatureDescriptionWrapper,
-  TemperatureWrapper, Temperature, TitleWrapper,
-  DescriptionWrapper, GrausWrapper, Content,
-  ThermalRangeWrapper, Image, ForecastWrapper,
+  TemperatureWrapper, Temperature,
+  TitleWrapper, DescriptionWrapper,
+  GrausWrapper, Content,
+  ThermalRangeWrapper, ForecastWrapper,
   PlaceCharacteristicWrapper,
 } from './style';
-import { Characteristic, ThermalRange } from '../../components';
-import { Rainy } from '../../assets';
-import { Forecast } from '../../components/Forecast';
+
+type ForecastComponent = {
+  title: string;
+  time: number;
+}
 
 export const Weather: React.FC = () => {
   const navigate = useNavigate();
   const { city } = useParams();
+  const { theme, toggleTheme } = useWeatherTheme();
 
   const [weather, setWeather] = useState<ForecastData>(ForecastDefault);
 
@@ -28,6 +42,14 @@ export const Weather: React.FC = () => {
   const forecastday = weather.forecast.forecastday[0];
   const maximumTemperature = forecastday.day.maxtemp_c;
   const minimumTemperature = forecastday.day.mintemp_c;
+  const condition = weatherDetails.condition.text;
+
+  const forecastComponents: ForecastComponent[] = [
+    { title: 'dawn', time: 2 },
+    { title: 'morning', time: 8 },
+    { title: 'afternoon', time: 14 },
+    { title: 'night', time: 20 },
+  ];
 
   const searchCity = city || '';
 
@@ -45,10 +67,25 @@ export const Weather: React.FC = () => {
     getWeather();
   }, []);
 
+  useEffect(() => {
+    toggleTheme(condition, weatherDetails.temp_c);
+  }, [condition]);
+
   const getTemperatureFor = (time: number): string => {
     const { hour } = forecastday;
     if (!hour || hour.length < 24) return '--';
     return `${hour[time].temp_c}`;
+  };
+
+  const iconFactory = (time: number): ReactNode => {
+    const isSun = time <= 17;
+    const { hour } = forecastday;
+    if (hour.length <= 0 || hour.length > 24) {
+      return isSun ? <Sun /> : <Moon />;
+    }
+
+    const { text } = hour[time].condition;
+    return chooseIcon(text, isSun);
   };
 
   return (
@@ -67,7 +104,7 @@ export const Weather: React.FC = () => {
 
         <TitleWrapper>
           <Title>{city?.toUpperCase()}</Title>
-          <Subtitle>{weatherDetails.condition.text}</Subtitle>
+          <Subtitle>{condition}</Subtitle>
         </TitleWrapper>
 
         <TemperatureDescriptionWrapper>
@@ -99,13 +136,20 @@ export const Weather: React.FC = () => {
 
       </InfoPlaceContainer>
 
-      <Image src={Rainy} alt="rainy" />
+      {
+        getCurrentWeater(condition, theme.colors.primary)
+      }
 
       <ForecastWrapper>
-        <Forecast title="dawn" value={getTemperatureFor(2)} />
-        <Forecast title="morning" value={getTemperatureFor(8)} />
-        <Forecast title="afternoon" value={getTemperatureFor(14)} />
-        <Forecast title="night" value={getTemperatureFor(20)} />
+        {
+          forecastComponents.map(({ time, title }) => (
+            <Forecast title={title} value={getTemperatureFor(time)} key={title}>
+              {
+                iconFactory(time)
+              }
+            </Forecast>
+          ))
+        }
       </ForecastWrapper>
 
       <PlaceCharacteristicWrapper>

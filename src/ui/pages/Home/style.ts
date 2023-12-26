@@ -9,7 +9,9 @@ export const Container = styled.div`
   align-items: center;
   flex-direction: column;
 
-  gap: 8px;
+  gap: 32px;
+
+  background-color: ${({ theme }) => theme.colors.home};
 
 `;
 
@@ -19,31 +21,33 @@ export const TitleWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 3px;
 
 `;
 
 export const Title = styled.p`
-    color: ${({ theme }) => theme.colors.textWhite};
-    font-size: 1.8rem;
-    font-weight: 400;
+    color: ${({ theme }) => theme.colors.homePrimary};
+    font-size: 2.3rem;
+    font-weight: 300;
     letter-spacing: 2px;  
+    line-height: 1;
 `;
 
 export const Subtitle = styled.p`
-  color: ${({ theme }) => theme.colors.textWhite};
-  font-size: 1.4rem;
-  font-weight: 200;
-  letter-spacing: 1.5px;  
+  color: ${({ theme }) => theme.colors.homePrimary};
+  font-size: 1.6rem;
+  font-weight: 100;
+  letter-spacing: 1px;  
+  line-height: 1;
 `;
 
 export const Image = styled.img`
-  width: 40%;
+  width: 32%;
 
   @media (min-width:480px) {
 
     width: 230px;
   }
-
 `;
 
 export const PlacesContainer = styled.div`
@@ -72,10 +76,10 @@ export const TextButton = styled.button`
   border: none;
   padding: 8px 8px;
   background: none;
-  color: ${({ theme }) => theme.colors.textWhite};
+  color: ${({ theme }) => theme.colors.homePrimary};
 
   font-weight: 200;
   letter-spacing: 1.4px;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 
 `;

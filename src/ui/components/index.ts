@@ -1,5 +1,9 @@
-import { Button } from './ButtonExample/Button';
+import { ThermalRange } from './ThermalRange';
+import { Forecast } from './Forecast';
+import { Characteristic } from './Characteristic';
 
 export {
-  Button,
+  ThermalRange,
+  Forecast,
+  Characteristic,
 };

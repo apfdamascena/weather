@@ -42,12 +42,8 @@ export const Subtitle = styled.p`
 `;
 
 export const Image = styled.img`
-  width: 32%;
+  width: 120px;
 
-  @media (min-width:480px) {
-
-    width: 230px;
-  }
 `;
 
 export const PlacesContainer = styled.div`

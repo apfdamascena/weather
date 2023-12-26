@@ -119,8 +119,8 @@ export const Weather: React.FC = () => {
 
           <DescriptionWrapper>
             <GrausWrapper>
-              <Content className="grau">&deg;</Content>
-              <Content className="unidade">C</Content>
+              <Content className="weather-degree">&deg;</Content>
+              <Content className="weather-unity">C</Content>
             </GrausWrapper>
 
             <ThermalRangeWrapper>

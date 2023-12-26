@@ -124,7 +124,7 @@ export const Content = styled.span`
   right: 4px;
   bottom: 4px;
 
-  &.grau {
+  &.weather-degree {
 
     font-size: 13px;
     margin-top: 5px;
@@ -133,7 +133,7 @@ export const Content = styled.span`
 
   }
 
-  &.unidade {
+  &.weather-unity {
 
     font-size: 27px; 
     font-weight: 300;

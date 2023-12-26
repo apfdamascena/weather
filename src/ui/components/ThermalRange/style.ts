@@ -8,12 +8,12 @@ export const Container = styled.div`
 `;
 
 export type ArrowRangeProps = {
-  upArrow?: boolean
+  arrowgoesto?: string
 };
 
 export const ArrowRange = styled(ArrowRightAlt)<ArrowRangeProps>`
     transform: ${(props) => {
-    const multiplier = props.upArrow ? -1 : 1;
+    const multiplier = props.arrowgoesto ? -1 : 1;
     const degrees = multiplier * 90;
     return `rotate(${degrees}deg)`;
   }};
